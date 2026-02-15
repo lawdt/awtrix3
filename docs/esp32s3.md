@@ -55,16 +55,26 @@ Default matrix layout is **1** (tiled progressive). If the display shows wrong p
 
 ### Matrix (WS2812B 32x8)
 
+When looking at the matrix from the **front (LED side)**, data input (DIN) is at the **top-left corner**, data output (DOUT) is at the **bottom-right corner**.
+
+Chain 4 matrices left to right: DOUT of each panel connects to DIN of the next panel (bottom-right → top-left).
+
 ```
-Arduino Nano ESP32          WS2812B Matrix
-┌─────────────────┐         ┌──────────┐
-│             D2  ├────────►│ DIN      │
-│            GND  ├─────────┤ GND      │
-│             5V  ├─────────┤ 5V       │
-└─────────────────┘         └──────────┘
+  Front view (LED side facing you):
+
+  Panel 1          Panel 2          Panel 3          Panel 4
+  DIN──────►       DIN──────►       DIN──────►       DIN──────►
+  ┌────────┐       ┌────────┐       ┌────────┐       ┌────────┐
+  │ 8x8    │       │ 8x8    │       │ 8x8    │       │ 8x8    │
+  │        │       │        │       │        │       │        │
+  └────────┘       └────────┘       └────────┘       └────────┘
+       DOUT───────►DIN         DOUT───────►DIN         DOUT───────►DIN
+        ▲
+        │
+  D2 (GPIO5)
 ```
 
-- **D2 (GPIO5)** → Matrix data input (DIN)
+- **D2 (GPIO5)** → DIN of the first (leftmost) panel
 - **GND** → GND
 - **5V (VBUS)** → 5V power (or use external 5V power supply for many LEDs)
 
