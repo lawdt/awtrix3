@@ -62,9 +62,9 @@ Chain 4 matrices left to right: DOUT of each panel connects to DIN of the next p
 ```
 Front view (LED side facing you):
 
-D2 (GPIO5)
-  |    ,-------,    ,-------,    ,-------,
-  v    |       v    |       v    |       v
+D2 (GPIO5)  /--------\  /--------\  /--------\
+  |         |        |  |        |  |        |
+  v         v        |  v        |  v        |
 +--------+  +--------+  +--------+  +--------+
 |DIN     |  |DIN     |  |DIN     |  |DIN     |
 |        |  |        |  |        |  |        |
@@ -72,7 +72,8 @@ D2 (GPIO5)
 |        |  |        |  |        |  |        |
 |     DOUT|  |     DOUT|  |     DOUT|  |     DOUT|
 +--------+  +--------+  +--------+  +--------+
- Panel 1  `--' Panel 2  `--' Panel 3       Panel 4
+      \__/        \__/        \__/
+ Panel 1     Panel 2     Panel 3     Panel 4
 ```
 
 Each panel: DIN = top-left, DOUT = bottom-right.
