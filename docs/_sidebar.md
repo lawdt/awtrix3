@@ -4,6 +4,7 @@
   - [Flasher](flasher.md)
   - [Upgrade](upgrade.md)
   - [Hardware](hardware.md)
+  - [ESP32-S3 (Nano)](esp32s3.md)
   - [FAQ](faq.md)
   - [Remove AWTRIX](original.md)
     

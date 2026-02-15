@@ -42,10 +42,7 @@ Pin mapping for [Arduino Nano ESP32](https://docs.arduino.cc/hardware/nano-esp32
 | DFPlayer TX | 30 | 18 | D1 | 43 |
 | Reset | — | 13 | D7 | 10 |
 
-Notes:
-- Use `esp32_s3_nano` build environment in PlatformIO
-- Default matrix layout is 1 (tiled progressive). If display is wrong, create `dev.json` with `{"matrix": 0}` or `{"matrix": 2}`
-- Flash via USB-C. To enter bootloader mode: short GND and B1 pins, press RESET, then remove the jumper before flashing
+For build and flash instructions see [ESP32-S3 Guide](esp32s3.md).
 
 ---
 
