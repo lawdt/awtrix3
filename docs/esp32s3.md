@@ -60,18 +60,18 @@ When looking at the matrix from the **front (LED side)**, data input (DIN) is at
 Chain 4 matrices left to right: DOUT of each panel connects to DIN of the next panel (bottom-right → top-left).
 
 ```
-  Front view (LED side facing you):
+Front view (LED side facing you):
 
-  Panel 1          Panel 2          Panel 3          Panel 4
-  DIN──────►       DIN──────►       DIN──────►       DIN──────►
-  ┌────────┐       ┌────────┐       ┌────────┐       ┌────────┐
-  │ 8x8    │       │ 8x8    │       │ 8x8    │       │ 8x8    │
-  │        │       │        │       │        │       │        │
-  └────────┘       └────────┘       └────────┘       └────────┘
-       DOUT───────►DIN         DOUT───────►DIN         DOUT───────►DIN
-        ▲
-        │
-  D2 (GPIO5)
+D2 (GPIO5)
+  |
+  v
++--------+    +--------+    +--------+    +--------+
+|DIN     |    |DIN     |    |DIN     |    |DIN     |
+|        |    |        |    |        |    |        |
+| 8x8  .-+--->+-.  8x8 +--->+-.  8x8+--->+-. 8x8  |
+|     DOUT    |DIN    DOUT  |DIN   DOUT  |DIN      |
++--------+    +--------+    +--------+    +--------+
+ Panel 1       Panel 2       Panel 3       Panel 4
 ```
 
 - **D2 (GPIO5)** → DIN of the first (leftmost) panel
