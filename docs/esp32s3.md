@@ -65,14 +65,14 @@ Front view (LED side facing you):
 D2 (GPIO5)
   |
   v
-+--------+  +--------+  +--------+  +--------+
-|DIN     |  |DIN     |  |DIN     |  |DIN     |
-|        |  |        |  |        |  |        |
-|  8x8   |  |  8x8   |  |  8x8   |  |  8x8   |
-|        |  |        |  |        |  |        |
-|     DOUT|  |     DOUT|  |     DOUT|  |     DOUT|
-+--------+  +--------+  +--------+  +--------+
- Panel 1     Panel 2     Panel 3     Panel 4
++--------+   /->+--------+   /->+--------+   /->+--------+
+|DIN     |   |  |DIN     |   |  |DIN     |   |  |DIN     |
+|        |   |  |        |   |  |        |   |  |        |
+|  8x8   |   |  |  8x8   |   |  |  8x8   |   |  |  8x8   |
+|        |   |  |        |   |  |        |   |  |        |
+|    DOUT|   |  |    DOUT|   |  |    DOUT|   |  |    DOUT|
++--------+->/   +--------+->/   +--------+->/   +--------+
+ Panel 1         Panel 2         Panel 3         Panel 4
 ```
 
 Each panel: DIN = top-left, DOUT = bottom-right.
