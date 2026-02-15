@@ -68,11 +68,15 @@ D2 (GPIO5)
 +--------+    +--------+    +--------+    +--------+
 |DIN     |    |DIN     |    |DIN     |    |DIN     |
 |        |    |        |    |        |    |        |
-| 8x8  .-+--->+-.  8x8 +--->+-.  8x8+--->+-. 8x8  |
-|     DOUT    |DIN    DOUT  |DIN   DOUT  |DIN      |
+|  8x8   |    |  8x8   |    |  8x8   |    |  8x8   |
+|        |    |        |    |        |    |        |
+|     DOUT|    |     DOUT|    |     DOUT|    |     DOUT|
 +--------+    +--------+    +--------+    +--------+
- Panel 1       Panel 2       Panel 3       Panel 4
+ Panel 1  \__/ Panel 2  \__/ Panel 3  \__/ Panel 4
 ```
+
+Each panel: DIN = top-left, DOUT = bottom-right.
+Connect DOUT (bottom-right) of each panel to DIN (top-left) of the next.
 
 - **D2 (GPIO5)** → DIN of the first (leftmost) panel
 - **GND** → GND
