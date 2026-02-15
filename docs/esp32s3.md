@@ -59,16 +59,24 @@ When looking at the matrix from the **front (LED side)**, data input (DIN) is at
 
 Chain 4 matrices left to right: DOUT of each panel connects to DIN of the next panel (bottom-right → top-left).
 
-Looking at each panel from the **front (LED side)**:
-- **DIN** = top-left corner
-- **DOUT** = bottom-right corner
+```
+Front view (LED side facing you):
 
-Wiring order (left to right):
+D2 (GPIO5)
+  |
+  v
++--------+  +--------+  +--------+  +--------+
+|DIN     |  |DIN     |  |DIN     |  |DIN     |
+|        |  |        |  |        |  |        |
+|  8x8   |  |  8x8   |  |  8x8   |  |  8x8   |
+|        |  |        |  |        |  |        |
+|     DOUT|  |     DOUT|  |     DOUT|  |     DOUT|
++--------+  +--------+  +--------+  +--------+
+ Panel 1     Panel 2     Panel 3     Panel 4
+```
 
-1. **D2 (GPIO5)** → **DIN** of Panel 1 (top-left)
-2. **DOUT** of Panel 1 (bottom-right) → **DIN** of Panel 2 (top-left)
-3. **DOUT** of Panel 2 (bottom-right) → **DIN** of Panel 3 (top-left)
-4. **DOUT** of Panel 3 (bottom-right) → **DIN** of Panel 4 (top-left)
+Each panel: DIN = top-left, DOUT = bottom-right.
+Wire goes from DOUT (bottom-right) up and over to DIN (top-left) of the next panel.
 
 - **D2 (GPIO5)** → DIN of the first (leftmost) panel
 - **GND** → GND
