@@ -36,6 +36,8 @@ bool sendFrame = 1;
 int previousDataLength = 0;
 #ifdef awtrix2_upgrade
 #define MATRIX_PIN D2
+#elif defined(ESP32_S3)
+#define MATRIX_PIN 5 // Arduino Nano ESP32: D2 = GPIO5
 #else
 #define MATRIX_PIN 32
 #endif

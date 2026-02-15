@@ -61,8 +61,14 @@ void BootAnimation(void *parameter)
 
 void setup()
 {
+#if defined(ESP32_S3)
+  // Buzzer on GPIO9 (D6) for Arduino Nano ESP32
+  pinMode(9, OUTPUT);
+  digitalWrite(9, LOW);
+#else
   pinMode(15, OUTPUT);
   digitalWrite(15, LOW);
+#endif
   delay(2000);
   Serial.begin(115200);
   loadSettings();

@@ -283,7 +283,11 @@ void loadSettings()
     SHOW_DATE = Settings.getBool("DAT", false);
     SHOW_TEMP = Settings.getBool("TEMP", true);
     SHOW_HUM = Settings.getBool("HUM", true);
+#if defined(ESP32_S3)
+    MATRIX_LAYOUT = Settings.getUInt("MAT", 1);
+#else
     MATRIX_LAYOUT = Settings.getUInt("MAT", 0);
+#endif
     SCROLL_SPEED = Settings.getUInt("SSPEED", 100);
 #ifdef ULANZI
     SHOW_BAT = Settings.getBool("BAT", true);

@@ -28,33 +28,42 @@ const char *message = "HELLO"; // Die Nachricht, die gesendet werden soll
 #define MEDIAN_WND 7 // A median filter window size of seven should be enough to filter out most spikes
 #define MEAN_WND 7   // After filtering the spikes we don't need many samples anymore for the average
 
+#ifdef awtrix2_upgrade
+// Pinouts für das WEMOS_D1_MINI32-Environment
 #define DFPLAYER_RX 23
 #define DFPLAYER_TX 18
 #define BUZZER_PIN 15
 #define RESET_PIN 13
-
-#ifdef awtrix2_upgrade
-// Pinouts für das WEMOS_D1_MINI32-Environment
 #define LDR_PIN A0
 #define BUTTON_UP_PIN D0
 #define BUTTON_DOWN_PIN D8
 #define BUTTON_SELECT_PIN D4
-
 #define I2C_SCL_PIN D1
 #define I2C_SDA_PIN D3
-#elif ESP32_S3
-#define BATTERY_PIN 4
-#define BUZZER_PIN 5
-#define LDR_PIN 6
-#define BUTTON_UP_PIN 7
-#define BUTTON_DOWN_PIN 8
-#define BUTTON_SELECT_PIN 10
-#define I2C_SCL_PIN 10
-#define I2C_SDA_PIN 11
+
+#elif defined(ESP32_S3)
+// Arduino Nano ESP32 (ESP32-S3) GPIO mapping
+// D2=GPIO5, D3=GPIO6, D4=GPIO7, D5=GPIO8, D6=GPIO9
+// A0=GPIO1, A1=GPIO2, A4=GPIO11(SDA), A5=GPIO12(SCL)
+#define BATTERY_PIN 2       // A1
+#define LDR_PIN 1           // A0
+#define BUZZER_PIN 9        // D6
+#define BUTTON_UP_PIN 6     // D3
+#define BUTTON_DOWN_PIN 7   // D4
+#define BUTTON_SELECT_PIN 8 // D5
+#define I2C_SDA_PIN 11      // A4
+#define I2C_SCL_PIN 12      // A5
+#define DFPLAYER_RX 44      // D0/RX
+#define DFPLAYER_TX 43      // D1/TX
+#define RESET_PIN 10        // D7
+
 #else
 // Pinouts für das ULANZI-Environment
+#define DFPLAYER_RX 23
+#define DFPLAYER_TX 18
+#define BUZZER_PIN 15
+#define RESET_PIN 13
 #define BATTERY_PIN 34
-
 #define LDR_PIN 35
 #define BUTTON_UP_PIN 26
 #define BUTTON_DOWN_PIN 14
