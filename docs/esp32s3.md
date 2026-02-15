@@ -51,6 +51,48 @@ Default matrix layout is **1** (tiled progressive). If the display shows wrong p
    ```
 3. Try values `0`, `1`, or `2` and reboot after each change
 
+## Wiring
+
+### Matrix (WS2812B 32x8)
+
+```
+Arduino Nano ESP32          WS2812B Matrix
+┌─────────────────┐         ┌──────────┐
+│             D2  ├────────►│ DIN      │
+│            GND  ├─────────┤ GND      │
+│             5V  ├─────────┤ 5V       │
+└─────────────────┘         └──────────┘
+```
+
+- **D2 (GPIO5)** → Matrix data input (DIN)
+- **GND** → GND
+- **5V (VBUS)** → 5V power (or use external 5V power supply for many LEDs)
+
+> For 256 LEDs at full brightness you may need an external 5V power supply (2-3A). Connect its GND to the board GND.
+
+### LDR (light sensor)
+
+```
+         3.3V
+          │
+        [LDR]
+          │
+A0 ──────┤
+          │
+        [10kΩ]
+          │
+         GND
+```
+
+- **LDR** between **3.3V** and **A0 (GPIO1)**
+- **10kΩ resistor** between **A0 (GPIO1)** and **GND**
+
+More light → lower LDR resistance → higher voltage on A0 → higher brightness.
+
+Enable auto-brightness via API: `{"ABRI": true}` or in `dev.json`.
+
+> LDR has no polarity — either leg in either direction.
+
 ## Pin mapping
 
 See [Hardware](hardware.md#arduino-nano-esp32-esp32-s3) for the full pin mapping table.
