@@ -397,6 +397,10 @@ uint16_t MAX_BATTERY = 665;
 
 #ifdef awtrix2_upgrade
 float TEMP_OFFSET;
+#elif defined(ESP32_S3)
+float TEMP_OFFSET = 0;
+uint8_t BATTERY_PERCENT = 0;
+uint16_t BATTERY_RAW = 0;
 #else
 float TEMP_OFFSET = -9;
 uint8_t BATTERY_PERCENT = 0;

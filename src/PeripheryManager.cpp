@@ -3,6 +3,7 @@
 #include "Adafruit_BME280.h"
 #include "Adafruit_BMP280.h"
 #include "Adafruit_HTU21DF.h"
+#include "Adafruit_AHTX0.h"
 #include "SoftwareSerial.h"
 #include <DFMiniMp3.h>
 #include <MelodyPlayer/melody_player.h>
@@ -76,6 +77,7 @@ Adafruit_BME280 bme280;
 Adafruit_BMP280 bmp280;
 Adafruit_HTU21DF htu21df;
 Adafruit_SHT31 sht31;
+Adafruit_AHTX0 aht20;
 
 #ifdef awtrix2_upgrade
 #define USED_PHOTOCELL LightDependentResistor::GL5528
@@ -424,7 +426,13 @@ void PeripheryManager_::setup()
 
     Wire.begin(I2C_SDA_PIN, I2C_SCL_PIN);
 
-    if (bme280.begin(BME280_ADDRESS) || bme280.begin(BME280_ADDRESS_ALTERNATE))
+    if (aht20.begin(&Wire))
+    {
+        if (DEBUG_MODE)
+            DEBUG_PRINTLN(F("AHT20 sensor detected"));
+        TEMP_SENSOR_TYPE = TEMP_SENSOR_TYPE_AHT20;
+    }
+    else if (bme280.begin(BME280_ADDRESS) || bme280.begin(BME280_ADDRESS_ALTERNATE))
     {
         if (DEBUG_MODE)
             DEBUG_PRINTLN(F("BME280 sensor detected"));
@@ -515,6 +523,14 @@ void PeripheryManager_::tick()
                 CURRENT_TEMP = bme280.readTemperature();
                 CURRENT_HUM = bme280.readHumidity();
                 break;
+            case TEMP_SENSOR_TYPE_AHT20:
+            {
+                sensors_event_t humidity, temp;
+                aht20.getEvent(&humidity, &temp);
+                CURRENT_TEMP = temp.temperature;
+                CURRENT_HUM = humidity.relative_humidity;
+                break;
+            }
             case TEMP_SENSOR_TYPE_BMP280:
                 CURRENT_TEMP = bmp280.readTemperature();
                 CURRENT_HUM = 0;
